@@ -1,0 +1,26 @@
+@media (max-width: 767px) {
+    .container {        
+        margin: 0 20px;
+    }
+
+    header {
+
+        .nav_menu {
+            display: none;
+        }
+
+        .burger {
+            display: block;
+        }
+    }
+
+    main .discount .slider .slide {
+        .slide_desc .slide_desc_content {
+            margin: 40px 26px;
+        }
+        .slide_img {
+            display: none;
+        }
+    }
+    
+}

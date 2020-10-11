@@ -1,0 +1,11 @@
+$main_color: #363636;
+$secondary_color: #898989;
+$accent_color: #78b660;
+$accent_selected_color: #7db52c;
+$bg_accent_color: #d7e9ce;
+$bg_light_color: #f2f2f2;
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
