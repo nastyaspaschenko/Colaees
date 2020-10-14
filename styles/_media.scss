@@ -1,26 +1,131 @@
+@import '_theme';
+
 @media (max-width: 767px) {
     .container {        
         margin: 0 20px;
     }
 
-    header {
+    body {
+        background: url("../imgs/flower.svg") top -350px right -500px / 686px 661px no-repeat,
+            url("../imgs/flower.svg") left -490px bottom -270px / 686px 661px no-repeat,
+            url("../imgs/bgrnd.png") center no-repeat,
+            #fff linear-gradient(to bottom, rgba(0,0,0,0.05) 0%,rgba(0,0,0,0) 31%,rgba(0,0,0,0) 100%) no-repeat;
+    }
 
-        .nav_menu {
-            display: none;
-        }
-
+    header {        
         .burger {
             display: block;
         }
+
+        .nav_menu {
+            display: none;
+            order: 1;
+            width: 100%;
+            margin: 0;
+            background-color: $bg_accent_color;
+
+            .nav_menu_items {                
+                padding: 0 20px;
+                flex-direction: column;
+            }
+            .sub_menu {
+                
+                .sub_menu_items {
+                    position: initial;
+                    background-color: transparent;
+                    padding: 0;
+                    
+                    &::before {
+                        border: none;
+                    }
+                }
+            }
+            .sub_sub_menu {
+                .sub_sub_menu_title::after {
+                    opacity: 1;
+                }
+                .sub_sub_menu_items {
+                    position: initial;
+                    height: initial;
+                    background-color: transparent;
+                    padding: 0;
+                }
+            }
+        }
     }
 
-    main .discount .slider .slide {
-        .slide_desc .slide_desc_content {
-            margin: 40px 26px;
-        }
-        .slide_img {
-            display: none;
+    main {
+        .discount {
+            margin: 40px 0;
+            .slider {
+                .slide {
+                    .slide_desc {
+                        .slide_desc_content {
+                            margin: 40px 26px;
+                        }
+                        
+                    }
+                    .slide_img {
+                        display: none;
+                    }
+                }
+            }
+            .slider_nav {
+                position: initial;
+                justify-content: center;
+            }
         }
     }
     
+}
+
+/* xs-размер (<=575px) >=320
+   CSS для ширины до 575px (включительно)*/
+@media (max-width: 575px) {
+    header {
+        .logo {
+            margin: 20px 0;
+        }
+        .nav_menu {
+            margin-bottom: 20px;
+        }
+        .contact {
+            order: 2;
+            width: 100%;
+            .tel, .tel_label {
+                text-align: center;
+            }
+            .tel {
+                display: block;
+            }
+        }
+    }
+
+    main {
+        .discount {
+            margin: 0;
+            .slider {
+                .slide {
+                    .slide_desc {
+                        .slide_desc_title {
+                            font-size: 22px;
+                        }
+                        .slide_desc_text {
+                            font-size: 20px;
+                        }
+                        .slide_desc_content {
+                            padding: 0 8px;
+                        }
+                        
+                    }
+                }
+            }
+        }
+        .content {
+            margin: 40px 0;
+            .title {
+                font-size: 26px;
+            }
+        }
+    }
 }

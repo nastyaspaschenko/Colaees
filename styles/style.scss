@@ -5,11 +5,10 @@
 body {
     max-width: 1920px;
     margin: 0 auto;
-    padding: 32px 0 125px;
 
-    background: url("../imgs/flower.svg") top -300px right -350px / 50% no-repeat,
-        url("../imgs/flower.svg") left -400px bottom -250px / 50% no-repeat,
-        url("../imgs/bgrnd.png") bottom left no-repeat,
+    background: url("../imgs/flower.svg") top -350px right -500px / 686px 661px no-repeat,
+        url("../imgs/flower.svg") left -490px bottom -270px / 686px 661px no-repeat,
+        url("../imgs/bgrnd.png") left 85px bottom 80px no-repeat,
         #fff linear-gradient(to bottom, rgba(0,0,0,0.05) 0%,rgba(0,0,0,0) 31%,rgba(0,0,0,0) 100%) no-repeat;
 
     font-family: 'HelveticaNeueCyr', sans-serif;
@@ -46,27 +45,14 @@ nav a {
     }
 }
 
-.nav_menu_items {
-    font-size: 14px;
-    font-weight: 100;
-
-    .sub_menu_items li {
-        padding-left: 20px;
-        padding-right: 50px;
-        color: #000;
-        a {
-            color: #000;
-        }
-    }
-}
-
 header {
-    height: 78px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 
-    .logo {        
+    .logo {
+        margin: 32px 0;
         a {
             display: block;
             width: 229px;
@@ -94,47 +80,43 @@ header {
     }
     
     .nav_menu {
-        .nav_menu_items > li {
-            display: inline;
-            margin-left: 20px;
-            padding: 10px 0;
-        }
-        .sub_menu {
-            cursor: pointer;
-            .sub_menu_items {
-                display: none;
+        flex-grow: 1;
+        margin: 0 100px 0 64px;
+        .nav_menu_items {
+            display: flex;
+            justify-content: space-between;
+            > li {
+                padding: 10px 0;
             }
-            &:hover .sub_menu_items {
-                display: block;
-            }                    
-        }
-        .sub_sub_menu {
-            .sub_sub_menu_items {
-                display: none;
-            }
-            &:hover .sub_sub_menu_items {
-                display: block;
-            }                    
-        }
-        .sub_menu {
-            position: relative;                
-
-            .sub_menu_title {
-                position: relative;
-
-                &::after {
-                    content: "";
-                    position: absolute;
-                    bottom: 50%;
-                    margin-left: 5px;
-
-                    border-top: 3px solid $accent_color;
-                    border-left: 3px solid transparent;
-                    border-right: 3px solid transparent;                    
+            .sub_menu_items li {
+                padding-left: 20px;
+                padding-right: 50px;
+                color: #000;
+                a {
+                    color: #000;
                 }
             }
+        }
+        .sub_menu_title, .sub_sub_menu_title {
+            position: relative;
+    
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 50%;
+                margin-left: 5px;
+    
+                border-top: 3px solid $accent_color;
+                border-left: 3px solid transparent;
+                border-right: 3px solid transparent;                    
+            }
+        }
+        .sub_menu {
+            position: relative;
+            cursor: pointer;
             
             .sub_menu_items {
+                display: none;
                 position: absolute;
                 top: 100%;
                 left: -20px;
@@ -142,7 +124,6 @@ header {
                 padding: 20px 0;
                 opacity: 0.9;
                 background-color: $bg_accent_color;
-                animation: fade 0.6s ease;
                 
                 &::before {
                     content: "";
@@ -157,26 +138,12 @@ header {
             }
         }
         .sub_sub_menu {
-
-            .sub_sub_menu_title {
-                position: relative;
-
-                &::after {
-                    display: none;
-                    content: "";
-                    position: absolute;
-                    top: 50%;
-                    left: 100%;
-
-                    width: 12px;
-                    height: 12px;
-                    border-top: 1px solid $accent_color;
-                    border-right: 1px solid $accent_color;
-                    transform: translateY(-50%) rotate(45deg);                
-                }
+            .sub_sub_menu_title::after {
+                opacity: 0;
             }
 
             .sub_sub_menu_items {
+                display: none;
                 position: absolute;
                 height: 100%;
                 top: 0;
@@ -188,14 +155,10 @@ header {
                 font-size: 12px;
                 font-weight: 300;
                 line-height: 2.17;
-                animation: fade 0.6s ease;
             }
 
-            &:hover {
-                background-color: $bg_light_color;
-                .sub_sub_menu_title::after {
-                    display: block;
-                }
+            &.active {                
+                background: $bg_light_color url("../imgs/arrow.png") center right 17px no-repeat;             
             }
 
         }
@@ -241,37 +204,6 @@ header {
         &.active span {
             transform: scale(0);
         }
-    }
-}
-
-.mobile_nav_menu {
-    display: none;
-    padding: 20px;
-    background-color: $bg_accent_color;
-
-    .nav_menu_items li {
-        padding: 5px 20px;
-        font-size: 14px;
-        font-weight: 100;
-    }
-
-    .sub_menu_title, .sub_sub_menu_title {
-        position: relative;
-
-        &::after {
-            content: "";
-            position: absolute;
-            bottom: 50%;
-            margin-left: 5px;
-
-            border-top: 3px solid $accent_color;
-            border-left: 3px solid transparent;
-            border-right: 3px solid transparent;                    
-        }
-    }
-
-    .sub_menu_items, .sub_sub_menu_items {
-        display: none;
     }
 }
 
@@ -341,8 +273,9 @@ main {
             position: absolute;
             left: 90px;
             bottom: 0;
+            display: flex;
+            align-items: center;
             .slider_nav_item {
-                display: inline-block;
                 margin: 4px;
                 width: 13px;
                 height: 13px;
@@ -358,15 +291,19 @@ main {
         }
     }
 
-    .title {
-        font-size: 30px;
-        font-weight: 100;
-        text-align: center;
-        margin-bottom: 16px;
+    .content {
+        margin: 80px 40px 125px;
+        .title {
+            font-size: 30px;
+            font-weight: 100;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        p {
+            text-align: center;
+        }
     }
-    p {
-        text-align: center;
-    }
+    
 }
 
 @import '_media';
